@@ -38,7 +38,7 @@
 
 # Settings ###################################################################
 
-my $filePattern='/var/log/mail/mail*.{log,log.gz}';
+my $filePattern='/var/log/mail*.{info,info.*}';
 my $LESS="less -S -R --shift=1";
 
 use strict;
@@ -68,6 +68,7 @@ my $STATUS_OK = 0;
 my $STATUS_ERR = 1;
 
 my $COLOR_NORM="\e[0;39m";
+my $COLOR_SUBJ="\e[1;32m";
 my $COLOR_TO="\e[0;36m";
 my $COLOR_FROM="\e[0;33m";
 my $COLOR_OK="\e[0;32m";
@@ -291,6 +292,8 @@ sub printResults
 
         $s=~ s/to=<(.*?)>/to=<$COLOR_TO$1$COLOR_NORM>/g;
         $s=~ s/from=<(.*?)>/from=<$COLOR_FROM$1$COLOR_NORM>/g;
+
+        $s=~ s/Subject: (.*?) from/Subject: $COLOR_SUBJ$1$COLOR_NORM from/g;
 
         my $status='';
         $status=$COLOR_OK     if ($msgs{$key}{'status'} == $STATUS_OK);
