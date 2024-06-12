@@ -293,7 +293,8 @@ sub printResults
         $s=~ s/to=<(.*?)>/to=<$COLOR_TO$1$COLOR_NORM>/g;
         $s=~ s/from=<(.*?)>/from=<$COLOR_FROM$1$COLOR_NORM>/g;
 
-        $s=~ s/Subject: (.*?) from/Subject: $COLOR_SUBJ$1$COLOR_NORM from/g;
+        $s=~ s/warning: header Subject: (.*?) from.*/subject=$COLOR_SUBJ$1$COLOR_NORM/g;
+        $s=~ s/ proto=.+//g;
 
         my $status='';
         $status=$COLOR_OK     if ($msgs{$key}{'status'} == $STATUS_OK);
@@ -408,3 +409,4 @@ sub showVer
     close FILE;
     exit;
 }
+
