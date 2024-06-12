@@ -1,6 +1,6 @@
 #!/usr/bin/perl
-# Анализатор почтовых логов
-# Ver 1.7
+# Mail log analyzer
+# Ver 1.7.b
 #
 # Copyright (C) 2010 Alexander Sokoloff <asokol@mail.ru>
 #
@@ -9,32 +9,32 @@
 # the Free Software Foundation; either version 2, or (at your option)
 # any later version.
 
-# Использование: maillog [-d DATE] [-f FROM] [-t TO] [-e] [-h] [-V]
+# Usage: maillog [-d DATE] [-f FROM] [-t TO] [-e] [-h] [-V]
 #
-# Показывает записи в почтовом логе для писем идущих с адреса FROM к
-# адресу TO за период указаный в опции DATE.
+# Shows entries in the mail log for letters coming from the FROM address to
+# TO address for the period specified in the DATE option.
 #
-#   -f FROM почтовый адрес отправителя (или его часть).
+# -f FROM sender's email address (or part of it).
 #
-#   -t TO   почтовый адрес получателя (или его часть).
+# -t TO recipient's mailing address (or part of it).
 #
-#   -d DATE выводить отчет за указанный период, если опция пропущена
-#           выводятся записи только за текущий день.
+# -d DATE print a report for the specified period if the option is omitted
+# Only records for the current day are displayed.
 #
-#     DD/MM/YY-DD/MM/YY   Полный формат:
-#        -DD/MM/YY   Пропущена начальная дата:
-#                    будут показаны записи с 1 января 1970 года.
-#      DD/MM/YY-     Пропущена конечная дата:
-#                    будут показаны записи до текущей даты.
-#       -            Пропущена как начальная, так и конечная даты:
-#                    будут показаны записи с 1 января 1970 года до
-#                    текущей даты.
+# DD/MM/YY-DD/MM/YY Full format:
+# -DD/MM/YY Start date missing:
+# records from January 1, 1970 will be shown.
+# DD/MM/YY- Missing end date:
+# records up to the current date will be shown.
+# - Both start and end dates are missing:
+# will show entries from January 1, 1970 to
+# current date.
 #
-#   -e      показывать только недоставленные сообщения.
+# -e show only undelivered messages.
 #
-#   -h      показать страницу помощи.
+# -h show help page.
 #
-#   -V      показать версию программы и лицензию.
+# -V show the program version and license.
 
 # Settings ###################################################################
 
